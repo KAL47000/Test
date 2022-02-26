@@ -10,6 +10,10 @@ public class CalculsTest {
 	private Calculs c2 = null;
 	private Calculs c3 = null;
 	
+	//pour la division
+	private Calculs c4_pour_division = null;
+	private Calculs c5_pour_division = null;
+	
 	/**
 	 * Initialise les valeurs avant chaque test 
 	 */
@@ -19,6 +23,9 @@ public class CalculsTest {
 		c1 = new Calculs(1,2);
 		c2 = new Calculs(10,20);
 		c3 = new Calculs(100,200);
+		//pour la division
+		c4_pour_division = new Calculs(4,2);
+		c5_pour_division = new Calculs (8,2);
 	}
 	
 
@@ -30,20 +37,20 @@ public class CalculsTest {
 	{
 		if (c1.multiplier() != 2)
 		{
-			fail("Methode multiplier non conforme 2*1=2 ne fonctionne pas.");
+			fail("Methode multiplier conforme 2*1=2 ne fonctionne pas.");
 		}
 		if (c2.multiplier() != 200)
 		{
-			fail("Methode multiplier non conforme 10*20=200 ne fonctionne pas.");			
+			fail("Methode multiplier conforme 10*20=200 ne fonctionne pas.");			
 		}
 		if (c3.multiplier() != 20000)
 		{
-			fail("Methode multiplier non conforme 100*200=20000 ne fonctionne pas.");			
+			fail("Methode multiplier conforme 100*200=20000 ne fonctionne pas.");			
 		}
 
 		
-		// Est ce que (2 == 42) ? non donc : test en Erreur
-		assertEquals(c1.multiplier(), 2, "Methode multiplier non conforme 2*1=2 ne fonctionne pas.");
+		// Est ce que (1*2 == 2) ? 
+		assertEquals(c1.multiplier(), 2, "Methode multiplier conforme 2*1=2 fonctionne.");
 
 	}
 
@@ -67,27 +74,11 @@ public class CalculsTest {
 			fail("Methode additionner non conforme 100+200=300 ne fonctionne pas.");			
 		}
 		
-		// Est ce que (2 == 42) ? non donc : test en Erreur
-		assertEquals(c1.additionner(), 3, "Methode additionner non conforme 2+1=3 ne fonctionne pas.");
+		// Est ce que (2+1 == 3) ? non donc : test en Erreur
+		assertEquals(c1.additionner(), 3, "Methode additionner conforme 2+1=3 fonctionne.");
 	}
 
-	/**
-	 * Test method for {@link Calculs#diviser()}.
-	 */
-	/*
-	 * @Test void testDiviser() {
-	 * 
-	 * if(c1.diviser() != 0.5) { fail("Methode diviser non conforme 1/2=0.5"); }
-	 * 
-	 * if (c2.diviser() != 0.5) {
-	 * fail("Methode diviser non conforme 10/20=0.5 ne fonctionne pas."); } if
-	 * (c3.diviser() != 0.5) {
-	 * fail("Methode diviser non conforme 100/200=0.5 ne fonctionne pas."); }
-	 * 
-	 * // Est ce que (2 == 42) ? non donc : test en Erreur
-	 * assertEquals(c1.diviser(), 0.5,
-	 * "Methode diviser non conforme 1/2=0.5 ne fonctionne pas"); }
-	 */
+	
 	/**
 	 * Test method for {@link Calculs#soustraire()}.
 	 */
@@ -108,7 +99,25 @@ public class CalculsTest {
 			fail("Methode soustraire non conforme 100-200=-100 ne fonctionne pas.");			
 		}
 		
-		// Est ce que (2 == 42) ? non donc : test en Erreur
-		assertEquals(c1.soustraire(),-1, "Methode additionner non conforme 1-2=-1 ne fonctionne pas");
+		// Est ce que (1-2 == -1) ? 
+		assertEquals(c1.soustraire(),-1, "Methode soustraire conforme 1-2=-1 fonctionne");
 	}
+	
+	
+	/**
+	 * Test method for {@link Calculs#diviser()}.
+	 */
+	 @Test 
+	 void testDiviser() {
+	 
+		 if(c4_pour_division.diviser() != 2) { fail("Methode diviser non conforme 4/2=2"); }
+		 
+		 if (c5_pour_division.diviser() != 4) {
+			 fail("Methode diviser non conforme 8/2=4 ne fonctionne pas.");
+		 } 
+		  
+		  // Est ce que (4/2 == 2) ? non donc : test en Erreur
+		  assertEquals(c4_pour_division.diviser(), 2, "Methode diviser conforme 4/2=2 fonctionne"); 
+	 }
+	
 }
